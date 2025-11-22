@@ -5510,3 +5510,18 @@ indent = { tab-width = 2, unit = "  " }
 [[grammar]]
 name = "concerto"
 source = { git = "https://github.com/accordproject/concerto-tree-sitter", rev = "920ba23ea93af56b19dfc38fcddf80b3ddc62685" }
+
+[[language]]
+name = "mim"
+scope = "source.mim"
+injection-regex = "basic"
+file-types = ["mim"]
+comment-tokens = ["//", "///"]
+block-comment-tokens = [
+  { start = "/*", end = "*/" }
+]
+indent = { tab-width = 4, unit = "    " }
+
+[[grammar]]
+name = "mim"
+source = { git = "https://gitlab.com/amaeble/tree-sitter-mim", rev = "b76cad53563611f210999162d4cdd221eb12efb1" }
