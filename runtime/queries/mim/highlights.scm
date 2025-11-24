@@ -1,6 +1,20 @@
 (identifier) @variable
 
-(annex) @variable
+(lam
+  name: (identifier) @variable.function
+  (pattern (identifier) @variable.parameter)*
+  (pattern
+    (pattern .(identifier) @variable.parameter))*
+  (pattern (group (identifier) @variable.parameter))*)
+
+(application . (identifier) @variable.function (_))
+
+(annex (identifier)? @variable.builtin
+  alias: (identifier)? @variable.other
+  normalizer: (identifier)? @variable.other
+) @variable.builtin
+
+(_ type: (identifier) @type)
 
 [
   "("
@@ -30,7 +44,6 @@
   "="
   "#"
   ":"
-  "%"
   "@"
   "->"
   "→"
@@ -54,9 +67,10 @@
 ] @keyword.function
 
 [
-  "extern"
   "where"
-]
+  "end"
+  "extern"
+] @keyword
 
 [
   "tt"
@@ -78,7 +92,7 @@
 ] @type.builtin
 
 
-(num_literal) @constant.numeric
+(int_literal) @constant.numeric
 
 (char_literal) @constant.character
 
