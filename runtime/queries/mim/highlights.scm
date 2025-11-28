@@ -19,6 +19,9 @@
 ) @variable.builtin
 
 (_ type: (identifier) @type)
+(_ type: (application (identifier) @type (_)) (_))
+(_ type: (application (application (identifier) @type (_)) (_)) (_))
+(_ type: (application (application (application (identifier) @type (_)) (_)) (_)) (_))
 
 [
   "("
