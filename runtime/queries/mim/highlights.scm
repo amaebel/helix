@@ -6,6 +6,10 @@
   (pattern
     (pattern .(identifier) @variable.parameter))*
   (pattern (group (identifier) @variable.parameter))*)
+(function_type
+  (pattern (pattern (identifier) @variable.parameter)))
+(function_type
+  (pattern (group (identifier) @variable.parameter)))
 
 (application . (identifier) @variable.function (_))
 
