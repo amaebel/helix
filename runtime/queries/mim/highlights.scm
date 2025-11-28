@@ -1,5 +1,6 @@
 (identifier) @variable
 
+; highlight parameters
 (lam
   name: (identifier) @variable.function
   (pattern (identifier) @variable.parameter)*
@@ -11,13 +12,18 @@
 (function_type
   (pattern (group (identifier) @variable.parameter)))
 
+; highlight identifiers used as functions
 (application . (identifier) @variable.function (_))
 
-(annex (identifier)? @variable.builtin
+; highlight annexes as builtins, which probably makes sense
+(annex
+  ; also highlight aliases
+  (identifier)? @variable.builtin
   alias: (identifier)? @variable.other
   normalizer: (identifier)? @variable.other
 ) @variable.builtin
 
+; highlight identifiers used as types or type level functions (with up to 4 arguments) as types
 (_ type: (identifier) @type)
 (_ type: (application (identifier) @type (_)) (_))
 (_ type: (application (application (identifier) @type (_)) (_)) (_))
@@ -99,7 +105,6 @@
 ] @type.builtin
 
 "return" @keyword.control
-
 
 (int_literal) @constant.numeric
 
