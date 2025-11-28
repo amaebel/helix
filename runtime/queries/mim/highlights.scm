@@ -106,11 +106,16 @@
 ] @type.builtin
 ;
 ; highlight identifiers that appear where types or type level functions
-; are expected
+; are expected (with up to eight parameters)
 (_ type: (identifier) @type)
-(_ type: (application (identifier) @type (_)) (_))
-(_ type: (application (application (identifier) @type (_)) (_)) (_))
-(_ type: (application (application (application (identifier) @type (_)) (_)) (_)) (_))
+(_ type: (application (identifier) @type (_)))
+(_ type: (application (application (identifier) @type (_)) (_)))
+(_ type: (application (application (application (identifier) @type (_)) (_)) (_)))
+(_ type: (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)))
+(_ type: (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)))
+(_ type: (application (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)) (_)))
+(_ type: (application (application (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)) (_)) (_)))
+(_ type: (application (application (application (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)) (_)) (_)) (_)))
 
 "return" @keyword.control
 
