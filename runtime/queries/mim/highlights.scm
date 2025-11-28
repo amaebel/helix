@@ -91,6 +91,8 @@
   "⊤" ".top"
 ] @type.builtin
 
+"return" @keyword.control
+
 
 (int_literal) @constant.numeric
 
