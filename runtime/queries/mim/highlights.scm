@@ -1,13 +1,21 @@
 ; ——— Identifiers & Annexes
-(identifier) @variable
+(value_identifier) @variable
 ;
-; highlight annexes as builtins, which probably makes sense
+(type_identifier) @type
+;
 (annex
-  ; also highlight aliases
-  (identifier)? @variable.builtin
-  alias: (identifier)? @variable.other
-  normalizer: (identifier)? @variable.other
-) @variable.builtin
+  "%" @namespace
+  module: (identifier) @namespace)
+(annex
+  name: (value_identifier) @variable.builtin)
+(annex
+  name: (type_identifier) @type.builtin)
+(annex
+  name: (identifier) @namespace
+  subtag: (value_identifier) @variable.builtin)
+(annex
+  name: (identifier) @namespace
+  subtag: (type_identifier) @type.builtin)
 
 ; ——— Functions & Parameters ———
 ;
@@ -100,6 +108,7 @@
   "Type"
   "Univ"
   "*"
+  "★"
   "□"
   "⊥" ".bot"
   "⊤" ".top"
