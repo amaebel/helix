@@ -88,6 +88,9 @@
   "lam"
   "con"
   "fun"
+  "lm"
+  "cn"
+  "fn"
   "Sigma"
 ] @keyword.function
 ;
