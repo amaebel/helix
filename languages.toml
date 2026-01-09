@@ -5524,4 +5524,4 @@ indent = { tab-width = 4, unit = "    " }
 
 [[grammar]]
 name = "mim"
-source = { git = "https://gitlab.com/amaeble/tree-sitter-mim", rev = "2473864459968767ea4a35c39f17f02736acae28" }
+source = { git = "https://gitlab.com/amaeble/tree-sitter-mim", rev = "ec0f5730768f5fabc18c33a60ba973020caa64b2" }
