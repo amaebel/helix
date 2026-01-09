@@ -170,7 +170,7 @@
   (#match? @type "^[A-Z][_a-zA-Z0-9]*$"))
 ;
 ((identifier) @constant
-  (#match? @constant "^_*[A-Z][_A-Z]*$"))
+  (#match? @constant "^_*[A-Z][A-Z][_A-Z]*$"))
 ;
 (annex
   "%" @namespace
@@ -180,7 +180,7 @@
 (annex
   name: ((identifier) @type.builtin (#match? @type.builtin "^[A-Z][_a-zA-Z0-9]*$")))
 (annex
-  name: ((identifier) @constant.builtin (#match? @constant.builtin "^_*[A-Z][_A-Z]*$")))
+  name: ((identifier) @constant.builtin (#match? @constant.builtin "^_*[A-Z][A-Z][_A-Z]*$")))
 (annex
   name: (identifier) @namespace
   subtag: (identifier) @variable.builtin)
@@ -189,4 +189,4 @@
   subtag: ((identifier) @type.builtin (#match? @type.builtin "^[A-Z][_a-zA-Z0-9]*$")))
 (annex
   name: (identifier) @namespace
-  subtag: ((identifier) @constant.builtin (#match? @constant.builtin "^_*[A-Z][_A-Z]*$")))
+  subtag: ((identifier) @constant.builtin (#match? @constant.builtin "^_*[A-Z][A-Z][_A-Z]*$")))
