@@ -1,22 +1,3 @@
-; ——— Identifiers & Annexes
-((identifier) @type
-  (#match? @type "^[A-Z][_a-zA-Z]*"))
-;
-(identifier) @variable
-;
-(annex
-  "%" @namespace
-  module: (identifier) @namespace)
-(annex
-  name: (identifier) @variable.builtin)
-(annex
-  name: ((identifier) @type.builtin (#match? @type.builtin "^[A-Z][_a-zA-Z]*")))
-(annex
-  name: (identifier) @namespace
-  subtag: (identifier) @variable.builtin)
-(annex
-  name: (identifier) @namespace
-  subtag: ((identifier) @type.builtin (#match? @type.builtin "^[A-Z][_a-zA-Z]*")))
 
 ; ——— Functions & Parameters ———
 ;
@@ -135,15 +116,15 @@
 ;
 ; highlight identifiers that appear where types or type level functions
 ; are expected (with up to eight parameters)
-(_ type: (identifier) @type)
-(_ type: (application (identifier) @type (_)))
-(_ type: (application (application (identifier) @type (_)) (_)))
-(_ type: (application (application (application (identifier) @type (_)) (_)) (_)))
-(_ type: (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)))
-(_ type: (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)))
-(_ type: (application (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)) (_)))
-(_ type: (application (application (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)) (_)) (_)))
-(_ type: (application (application (application (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)) (_)) (_)) (_)))
+; (_ type: (identifier) @type)
+; (_ type: (application (identifier) @type (_)))
+; (_ type: (application (application (identifier) @type (_)) (_)))
+; (_ type: (application (application (application (identifier) @type (_)) (_)) (_)))
+; (_ type: (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)))
+; (_ type: (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)))
+; (_ type: (application (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)) (_)))
+; (_ type: (application (application (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)) (_)) (_)))
+; (_ type: (application (application (application (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)) (_)) (_)) (_)))
 
 ; ——— Literals ———
 ;
@@ -158,7 +139,7 @@
 [
   "tt"
   "ff"
-] @constant.builtin
+] @constant.builtin.boolean
 ;
 ; special "keywords"
 ((identifier) @keyword.control.return
@@ -180,3 +161,32 @@
 ;
 (doc_comment) @comment.line.documentation
 
+; ——— Identifiers & Annexes
+;
+; General pattern must come first, specific patterns override
+(identifier) @variable
+;
+((identifier) @type
+  (#match? @type "^[A-Z][_a-zA-Z]*$"))
+;
+((identifier) @constant
+  (#match? @constant "^_*[A-Z][_A-Z]*$"))
+;
+(annex
+  "%" @namespace
+  module: (identifier) @namespace)
+(annex
+  name: (identifier) @variable.builtin)
+(annex
+  name: ((identifier) @type.builtin (#match? @type.builtin "^[A-Z][_a-zA-Z]*$")))
+(annex
+  name: ((identifier) @constant.builtin (#match? @constant.builtin "^_*[A-Z][_A-Z]*$")))
+(annex
+  name: (identifier) @namespace
+  subtag: (identifier) @variable.builtin)
+(annex
+  name: (identifier) @namespace
+  subtag: ((identifier) @type.builtin (#match? @type.builtin "^[A-Z][_a-zA-Z]*$")))
+(annex
+  name: (identifier) @namespace
+  subtag: ((identifier) @constant.builtin (#match? @constant.builtin "^_*[A-Z][_A-Z]*$")))
