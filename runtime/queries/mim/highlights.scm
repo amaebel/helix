@@ -158,7 +158,9 @@
 
 ; ——— Literals ———
 ;
-(int_literal) @constant.numeric
+(nat_literal) @constant.numeric
+;
+(idx_literal) @constant.numeric
 ;
 (float_literal) @constant.numeric
 ;
