@@ -126,6 +126,36 @@
 ; (_ type: (application (application (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)) (_)) (_)))
 ; (_ type: (application (application (application (application (application (application (application (application (identifier) @type (_)) (_)) (_)) (_)) (_)) (_)) (_)) (_)))
 
+; ——— Identifiers & Annexes
+;
+; General pattern must come first, specific patterns override
+(identifier) @variable
+;
+((identifier) @type
+  (#match? @type "^[A-Z][_a-zA-Z0-9]*$"))
+;
+((identifier) @constant
+  (#match? @constant "^_*[A-Z][A-Z][_A-Z]*$"))
+;
+(annex
+  "%" @namespace
+  module: (identifier) @namespace)
+(annex
+  name: (identifier) @variable.builtin)
+(annex
+  name: ((identifier) @type.builtin (#match? @type.builtin "^[A-Z][_a-zA-Z0-9]*$")))
+(annex
+  name: ((identifier) @constant.builtin (#match? @constant.builtin "^_*[A-Z][A-Z][_A-Z]*$")))
+(annex
+  name: (identifier) @namespace
+  subtag: (identifier) @variable.builtin)
+(annex
+  name: (identifier) @namespace
+  subtag: ((identifier) @type.builtin (#match? @type.builtin "^[A-Z][_a-zA-Z0-9]*$")))
+(annex
+  name: (identifier) @namespace
+  subtag: ((identifier) @constant.builtin (#match? @constant.builtin "^_*[A-Z][A-Z][_A-Z]*$")))
+
 ; ——— Literals ———
 ;
 (int_literal) @constant.numeric
@@ -160,33 +190,3 @@
 (block_comment) @comment.block
 ;
 (doc_comment) @comment.line.documentation
-
-; ——— Identifiers & Annexes
-;
-; General pattern must come first, specific patterns override
-(identifier) @variable
-;
-((identifier) @type
-  (#match? @type "^[A-Z][_a-zA-Z0-9]*$"))
-;
-((identifier) @constant
-  (#match? @constant "^_*[A-Z][A-Z][_A-Z]*$"))
-;
-(annex
-  "%" @namespace
-  module: (identifier) @namespace)
-(annex
-  name: (identifier) @variable.builtin)
-(annex
-  name: ((identifier) @type.builtin (#match? @type.builtin "^[A-Z][_a-zA-Z0-9]*$")))
-(annex
-  name: ((identifier) @constant.builtin (#match? @constant.builtin "^_*[A-Z][A-Z][_A-Z]*$")))
-(annex
-  name: (identifier) @namespace
-  subtag: (identifier) @variable.builtin)
-(annex
-  name: (identifier) @namespace
-  subtag: ((identifier) @type.builtin (#match? @type.builtin "^[A-Z][_a-zA-Z0-9]*$")))
-(annex
-  name: (identifier) @namespace
-  subtag: ((identifier) @constant.builtin (#match? @constant.builtin "^_*[A-Z][A-Z][_A-Z]*$")))
