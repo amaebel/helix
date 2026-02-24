@@ -75,12 +75,12 @@
   "rec"
   "and"
   "axm"
+  "ret"
 ] @keyword.storage.type
 ;
 [
   "match"
   "with"
-  "ret"
 ] @keyword.control
 ;
 [
