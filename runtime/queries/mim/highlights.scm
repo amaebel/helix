@@ -111,6 +111,10 @@
 ] @keyword.directive
 
 ; ——— Types
+[
+  "Cn"
+  "Fn"
+] @type.buildin
 ;
 (primitive) @type.builtin
 ;
