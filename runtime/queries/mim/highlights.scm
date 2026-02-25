@@ -187,6 +187,9 @@
 ((identifier) @keyword.control.return
   (#eq? @keyword.control.return "continue"))
 ;
+((identifier) @keyword.control.return
+  (#eq? @keyword.control.return "break"))
+;
 
 ; ——— Comments ———
 ; doc comment markdown injection is handled in injections.scm
