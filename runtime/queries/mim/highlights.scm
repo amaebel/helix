@@ -194,6 +194,9 @@
 ((identifier) @keyword.control.return
   (#eq? @keyword.control.return "break"))
 ;
+((identifier) @keyword.control.return
+  (#eq? @keyword.control.return "merge"))
+;
 
 ; ——— Comments ———
 ; doc comment markdown injection is handled in injections.scm
